@@ -11,4 +11,8 @@
 Thumbs.db
 *.swp
 
+# Devlog video pipeline (local only)
+/video/
+/.omc/
+
 # NOTE: *.uid files (Godot 4.4+) SHOULD be committed — they keep resource references stable.
