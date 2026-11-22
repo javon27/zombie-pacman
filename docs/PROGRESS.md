@@ -4,7 +4,7 @@
 
 ## Current step
 
-**M1 — Design one-pager**, in progress (M1.1: core loop + win/lose).
+**M1 — Design one-pager**, in progress (M1.3: setting + first pass on zombies/weapons).
 
 ## Roadmap
 
@@ -12,8 +12,8 @@
   - [x] M0.1 — Editor tour, placeholder `main.tscn` (Node2D + Sprite2D), first run (F5)
   - [x] M0.2 — VS Code external editor, verify godot-tools LSP, attach first script
 - [ ] M1 — Design one-pager
-  - [ ] M1.1 — Core loop + win/lose (DESIGN.md)
-  - [ ] M1.2 — Perspective & movement decisions (2D vs 3D, grid vs free, resolution/art)
+  - [x] M1.1 — Core loop + win/lose (DESIGN.md)
+  - [x] M1.2 — Perspective & movement decisions (2D vs 3D, grid vs free, resolution/art)
   - [ ] M1.3 — Setting + first pass on zombies/weapons
 - [ ] M2 — The survivor moves
 - [ ] M3 — The maze
@@ -50,3 +50,16 @@ Things the human has learned well enough that the AI may do them directly in "dr
 - Gotcha learned: launching Godot from VS Code's integrated terminal breaks "open in external editor"
   silently (inherited VS Code env vars). Launch Godot via Win+R / standalone terminal.
 - Open: confirm godot-tools LSP is actually connected (status bar shows GDScript, `get_tree()` autocompletes).
+
+### 2026-11-21 — M1.1 Core loop + win/lose
+- Filled in DESIGN.md core loop and win/lose; reviewed against Pac-Man's design.
+- Decisions: weapons = power pellets; overrun = visible countdown timer (prevents hiding forever);
+  hiding is a short breather, not stealth; MVP zombies always-chase, detection senses post-MVP;
+  killed zombies replaced; no exit; setting varies per level.
+- Open: how hiding works with always-chase, timer length/reset on death, spawn points (see DESIGN.md).
+
+### 2026-11-21 — M1.2 Perspective & movement
+- Decisions: 2D 3/4-view pixel art, 16 px tiles at retro res; grid-locked movement + AI;
+  player can stop; hiding = break line of sight + 2+ turns. Also: aggression scales with
+  supplies collected (smarter pathing + speed), zombies pause to sniff (telegraph).
+- Open: stop at tile centers vs. anywhere (M2 playtest); how long zombies stay "lost".

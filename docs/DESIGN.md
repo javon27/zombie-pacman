@@ -10,54 +10,91 @@ the horde closes in — grab a weapon to turn the tables, but it won't last._
 
 ## Core loop
 
-_What does the player do every 10 seconds? Every minute? Every level?_
+**Every 10 seconds** — route and evade.
+- Like Pac-Man: pick a route through the level collecting supplies (food, medicine, tools)
+  while avoiding zombie bites.
+- When chased, choose: **run** (fast, but noisy — may pull in more zombies) or **duck into
+  a hiding spot** for a short breather.
+- **Weapons replace power pellets:** grab one to turn the tables and fight back — but it
+  won't last.
 
--
+**Every minute** — the pressure builds.
+- Supplies get collected; the level empties out.
+- The horde keeps growing over time.
+- **Awareness rises as you carry more supplies** (more scent, tracks, noise): zombies get
+  more aggressive and hunt you deliberately (faster, more direct).
+- A visible **overrun timer** counts down to the tipping point.
+
+**Every level** — new rules to read.
+- New zombie types with different behaviors (e.g. sound-only, smell-only — post-MVP).
+- New setting (grocery store, police station, ...).
 
 ## Win / lose
 
-- Win a level when:
-- Lose a life when:
-- Game over when:
+- **Win a level when:** all supplies are collected before the overrun timer runs out.
+- **Lose a life when:** a zombie bites you. Actors reset to start positions; collected
+  supplies stay collected; play continues.
+- **Game over when:** out of lives, **or** the overrun timer runs out (the level is overrun).
 
 ## Setting & layout
 
 - [ ] City grid
 - [ ] Supermarket
-- [ ] Both (different levels)
+- [x] Different per level
 
-Notes:
+Notes: one setting per level — grocery store, police station, ...
 
 ## Perspective & movement
 
 | Decision | Choice | Why |
 |----------|--------|-----|
-| 2D (3/4 art) or 3D (angled camera) | | |
-| Grid-locked or free movement | | |
-| Tile size / base resolution | | |
-| Art style (pixel art? low-poly?) | | |
+| 2D (3/4 art) or 3D (angled camera) | 2D, 3/4-view art | Simpler for a first game; Pac-Man is a 2D grid game at heart |
+| Grid-locked or free movement | Grid-locked, but the player can **stop** (for hiding) | Crisp Pac-Man feel + turn buffering; stopping to be playtested |
+| Tile size / base resolution | Retro: 16×16 tiles, low base res (320×180 or 384×216, pick at setup) | Fast to make art for; explore higher res later |
+| Art style (pixel art? low-poly?) | Pixel art | Fits retro res; lots of CC0 placeholder art (Kenney.nl) |
+
+Zombie AI is grid-based too (tile-to-tile pathing).
 
 ## The survivor
 
--
+- Can hide for a short breather — not full stealth. Hiding is a pause, not a strategy:
+  escalation and the overrun timer keep running.
+- **How to hide:** break line of sight with a chasing zombie, then make **2+ turns**. The
+  zombie loses track (goes to your last known position and sniffs around).
+- Unlike Pac-Man, the survivor can **stop** moving (still grid-locked).
 
 ## Supplies (the "dots")
 
 _Types? All the same, or some worth more? Any "fruit" bonus equivalent?_
 
--
+- Food, medicine, tools (gameplay difference between them TBD).
 
 ## Zombies
 
 _How many? Do they have Pac-Man-style personalities? How do they behave when you're armed?_
 
+- **MVP: always-chasing** — zombies always know where you are (like Pac-Man's ghosts),
+  **except** they lose track when you break line of sight + make 2+ turns (see Survivor).
+  Detection by sound/smell is a possible post-MVP layer.
+- Start with ~1, more arrive over time and in response to noise.
+- Killed zombies don't come back — they're **replaced** by new ones.
+- **Awareness/aggression scales with supplies carried**, not time — the more you've
+  collected, the harder they hunt: **smarter pathing** (more direct routes to you) and speed.
+- **Readable tells:** zombies visibly **sniff** or **listen** for the player, so awareness
+  changes are something you can see, not just feel. (Placeholder icon/tint until M8 animations.)
+- **Sniffing pauses the zombie** — a telegraph and a window for the player to slip away.
+
 | Zombie | Behavior | Notes |
 |--------|----------|-------|
-| | | |
+| Listener | Detects by sound only | Post-MVP idea |
+| Sniffer | Detects by smell only | Post-MVP idea |
 
 ## Weapons (the power pellets)
 
 _Timed durability is the starting idea. Alternatives to playtest: hit-count, ammo, melee vs. ranged._
+
+- Weapons take the place of Pac-Man's power pellets: pick one up and the hunted becomes the
+  hunter, temporarily.
 
 | Weapon | Duration / durability | Effect on zombies | Notes |
 |--------|-----------------------|-------------------|-------|
@@ -65,12 +102,34 @@ _Timed durability is the starting idea. Alternatives to playtest: hit-count, amm
 
 ## Open questions
 
-- Do killed zombies come back (like Pac-Man ghost eyes returning home)?
-- Is there a "safe room" / exit you need to reach after collecting everything?
--
+- **Stopping: anywhere, or only at tile centers?** Tile-center stops keep the grid clean;
+  mid-tile stops feel more responsive. Playtest in M2.
+- **How long does a zombie stay lost?** Does it sniff for a few seconds, then resume
+  chasing from anywhere, or wander until it sees you again?
+- **How long is the overrun timer, and does it reset on death?** Also: does the horde size
+  reset when you lose a life, or keep climbing?
+- **How do awareness levels map to behavior?** Thresholds for smarter pathing / speed, how
+  often they wander vs. hunt? Can hiding lower awareness temporarily?
+- **What happens at the tipping point?** Instant game over, or a flood of zombies that's
+  effectively unsurvivable?
+- **Where do new zombies spawn?** (Pac-Man has the ghost house.) Spawning in view or right
+  next to the player feels unfair.
+- **How does "noise" work under always-chase?** Running pulls in more zombies — is that a
+  faster spawn rate while running?
 
 ## Decisions log
 
 | Date | Decision | Reason |
 |------|----------|--------|
-| | | |
+| 2026-11-21 | No exit/safe room — collecting all supplies wins | Keep it simple |
+| 2026-11-21 | Killed zombies stay dead but are replaced by new ones | Kills give relief without letting the level get easier |
+| 2026-11-21 | Setting changes per level (grocery store, police station, ...) | Variety between levels |
+| 2026-11-21 | Weapons replace power pellets | Core power-fantasy moment: the hunted becomes the hunter |
+| 2026-11-21 | "Overrun" = a visible countdown timer; horde grows until the tipping point | Measurable lose condition; prevents hiding forever |
+| 2026-11-21 | Hiding = short breather, not full stealth | Relief valve without building a stealth game |
+| 2026-11-21 | MVP zombies are always-chasing; detection senses are post-MVP | Readable like Pac-Man; much smaller scope for M5 |
+| 2026-11-21 | Zombie aggression scales with supplies collected, not time | Progress = danger (risk/reward); the overrun timer handles stalling |
+| 2026-11-21 | Awareness = smarter pathing + speed; zombies pause to sniff/listen as a visible tell | Readable telegraph; gives the player a window to escape |
+| 2026-11-21 | 2D, 3/4-view pixel art, 16 px tiles at retro res | Simplest path for a first game; revisit resolution later |
+| 2026-11-21 | Grid-locked movement + AI; the player can stop | Pac-Man feel and simple pathing; stopping enables hiding |
+| 2026-11-21 | Hiding = break line of sight + 2+ turns | Skill-based escape, no hiding-spot tiles needed |
