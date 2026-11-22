@@ -4,18 +4,23 @@
 
 ## Current step
 
-**M1 — Design one-pager**, in progress (M1.3: setting + first pass on zombies/weapons).
+**M2 — The survivor moves**, in progress (M2.1: pixel-art display settings + Input Map).
 
 ## Roadmap
 
 - [x] M0 — Orientation (editor tour, VS Code hookup, first run)
   - [x] M0.1 — Editor tour, placeholder `main.tscn` (Node2D + Sprite2D), first run (F5)
   - [x] M0.2 — VS Code external editor, verify godot-tools LSP, attach first script
-- [ ] M1 — Design one-pager
+- [x] M1 — Design one-pager
   - [x] M1.1 — Core loop + win/lose (DESIGN.md)
   - [x] M1.2 — Perspective & movement decisions (2D vs 3D, grid vs free, resolution/art)
-  - [ ] M1.3 — Setting + first pass on zombies/weapons
+  - [x] M1.3 — Setting + first pass on zombies/weapons
 - [ ] M2 — The survivor moves
+  - [ ] M2.1 — Pixel-art display settings + Input Map actions
+  - [ ] M2.2 — Player scene (`CharacterBody2D`), free movement first
+  - [ ] M2.3 — Grid-locked movement (tile-to-tile)
+  - [ ] M2.4 — Turn buffering (pre-turning)
+  - [ ] M2.5 — Stopping (tile-center vs. anywhere playtest)
 - [ ] M3 — The maze
 - [ ] M4 — Supplies (the "dots")
 - [ ] M5 — Zombies
@@ -63,3 +68,8 @@ Things the human has learned well enough that the AI may do them directly in "dr
   player can stop; hiding = break line of sight + 2+ turns. Also: aggression scales with
   supplies collected (smarter pathing + speed), zombies pause to sniff (telegraph).
 - Open: stop at tile centers vs. anywhere (M2 playtest); how long zombies stay "lost".
+
+### 2026-11-21 — M1.3 First level & weapon (M1 complete)
+- Level 1 = grocery store; first weapon = melee (bat/crowbar); supplies mostly equivalent
+  (medicine, packaged food) + one special "fruit" item (cake or fuel, effect TBD).
+- Next: M2.1 display settings + Input Map.

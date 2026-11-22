@@ -42,7 +42,8 @@ the horde closes in — grab a weapon to turn the tables, but it won't last._
 - [ ] Supermarket
 - [x] Different per level
 
-Notes: one setting per level — grocery store, police station, ...
+Notes: one setting per level. **Level 1: grocery store** (aisles = Pac-Man corridors; supplies
+fit the theme). Later: police station, ...
 
 ## Perspective & movement
 
@@ -59,6 +60,7 @@ Zombie AI is grid-based too (tile-to-tile pathing).
 
 - Can hide for a short breather — not full stealth. Hiding is a pause, not a strategy:
   escalation and the overrun timer keep running.
+- Running costs stamina, regain by taking a breather.
 - **How to hide:** break line of sight with a chasing zombie, then make **2+ turns**. The
   zombie loses track (goes to your last known position and sniffs around).
 - Unlike Pac-Man, the survivor can **stop** moving (still grid-locked).
@@ -67,7 +69,8 @@ Zombie AI is grid-based too (tile-to-tile pathing).
 
 _Types? All the same, or some worth more? Any "fruit" bonus equivalent?_
 
-- Food, medicine, tools (gameplay difference between them TBD).
+- **Regular supplies** (the dots): medicine bottles, packaged food — mostly equivalent.
+- **Special item** (the "fruit"): e.g. a cake or a fuel container. Effect TBD. Possibly increasing player stat.
 
 ## Zombies
 
@@ -98,10 +101,12 @@ _Timed durability is the starting idea. Alternatives to playtest: hit-count, amm
 
 | Weapon | Duration / durability | Effect on zombies | Notes |
 |--------|-----------------------|-------------------|-------|
-| | | | |
+| Bat / crowbar (first prototype) | TBD (timed vs. hit-count — playtest in M6) | TBD (flee? killable on contact?) | Melee |
 
 ## Open questions
 
+- **Special item: what does it do?** Pac-Man's fruit is just bonus points, appearing briefly
+  at a fixed spot. A fuel container hints at a mechanic (fire? a generator?); cake is pure reward.
 - **Stopping: anywhere, or only at tile centers?** Tile-center stops keep the grid clean;
   mid-tile stops feel more responsive. Playtest in M2.
 - **How long does a zombie stay lost?** Does it sniff for a few seconds, then resume
@@ -133,3 +138,6 @@ _Timed durability is the starting idea. Alternatives to playtest: hit-count, amm
 | 2026-11-21 | 2D, 3/4-view pixel art, 16 px tiles at retro res | Simplest path for a first game; revisit resolution later |
 | 2026-11-21 | Grid-locked movement + AI; the player can stop | Pac-Man feel and simple pathing; stopping enables hiding |
 | 2026-11-21 | Hiding = break line of sight + 2+ turns | Skill-based escape, no hiding-spot tiles needed |
+| 2026-11-21 | Level 1 is a grocery store | Aisles map to Pac-Man corridors; sets the tone |
+| 2026-11-21 | First weapon: melee (bat/crowbar) | Simple to prototype; closest to a power pellet |
+| 2026-11-21 | Supplies mostly equivalent + one special item | Pac-Man dots + fruit model |
