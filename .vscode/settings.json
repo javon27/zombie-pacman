@@ -1,0 +1,10 @@
+{
+	"godotTools.editorPath.godot4": "C:\\Users\\javon27\\AppData\\Local\\Microsoft\\WinGet\\Links\\godot.exe",
+	"[gdscript]": {
+		"editor.insertSpaces": false,
+		"editor.tabSize": 4
+	},
+	"files.exclude": {
+		"**/.godot": true
+	}
+}

@@ -1,0 +1,14 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+
+# Export output
+/build/
+*.tmp
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
+*.swp
+
+# NOTE: *.uid files (Godot 4.4+) SHOULD be committed — they keep resource references stable.

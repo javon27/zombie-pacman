@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+  <rect width="128" height="128" rx="20" fill="#1b1f1a"/>
+  <!-- zombie pac: a green pac-man with a stitched mouth wedge -->
+  <path d="M64 16a48 48 0 1 0 41.6 72L64 64l41.6-24A48 48 0 0 0 64 16z" fill="#7fb24a"/>
+  <circle cx="60" cy="38" r="7" fill="#1b1f1a"/>
+  <circle cx="62" cy="36" r="2.5" fill="#d23c3c"/>
+  <path d="M40 80l6 6m4-10l6 6m4-10l6 6" stroke="#3e5a24" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="112" cy="64" r="5" fill="#e8d36a"/>
+</svg>
