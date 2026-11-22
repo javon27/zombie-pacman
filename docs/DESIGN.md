@@ -51,7 +51,7 @@ fit the theme). Later: police station, ...
 |----------|--------|-----|
 | 2D (3/4 art) or 3D (angled camera) | 2D, 3/4-view art | Simpler for a first game; Pac-Man is a 2D grid game at heart |
 | Grid-locked or free movement | Grid-locked, but the player can **stop** (for hiding) | Crisp Pac-Man feel + turn buffering; stopping to be playtested |
-| Tile size / base resolution | Retro: 16×16 tiles, low base res (320×180 or 384×216, pick at setup) | Fast to make art for; explore higher res later |
+| Tile size / base resolution | Retro: 16×16 tiles, 384×216 base res (1152×648 window, 3× integer scale) | Fast to make art for; clean 5× scale to 1080p; explore higher res later |
 | Art style (pixel art? low-poly?) | Pixel art | Fits retro res; lots of CC0 placeholder art (Kenney.nl) |
 
 Zombie AI is grid-based too (tile-to-tile pathing).

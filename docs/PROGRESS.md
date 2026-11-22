@@ -4,7 +4,7 @@
 
 ## Current step
 
-**M2 — The survivor moves**, in progress (M2.1: pixel-art display settings + Input Map).
+**M2 — The survivor moves**, in progress (M2.2: player scene & free movement).
 
 ## Roadmap
 
@@ -16,7 +16,7 @@
   - [x] M1.2 — Perspective & movement decisions (2D vs 3D, grid vs free, resolution/art)
   - [x] M1.3 — Setting + first pass on zombies/weapons
 - [ ] M2 — The survivor moves
-  - [ ] M2.1 — Pixel-art display settings + Input Map actions
+  - [x] M2.1 — Pixel-art display settings + Input Map actions
   - [ ] M2.2 — Player scene (`CharacterBody2D`), free movement first
   - [ ] M2.3 — Grid-locked movement (tile-to-tile)
   - [ ] M2.4 — Turn buffering (pre-turning)
@@ -73,3 +73,8 @@ Things the human has learned well enough that the AI may do them directly in "dr
 - Level 1 = grocery store; first weapon = melee (bat/crowbar); supplies mostly equivalent
   (medicine, packaged food) + one special "fruit" item (cake or fuel, effect TBD).
 - Next: M2.1 display settings + Input Map.
+
+### 2026-11-21 — M2.1 Pixel-art display settings + Input Map
+- Set viewport to `384×216` (`1152×648` window override, `viewport` stretch, `integer` scale) and `Nearest` default texture filter.
+- Added `move_up`, `move_down`, `move_left`, `move_right` actions bound to WASD + arrow keys.
+- Next: M2.2 — create `actors/player/player.tscn` (`CharacterBody2D`) and get basic movement running.
