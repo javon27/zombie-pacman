@@ -4,14 +4,17 @@
 
 ## Current step
 
-**M0.2 — VS Code as external editor + LSP**, in progress.
+**M1 — Design one-pager**, in progress (M1.1: core loop + win/lose).
 
 ## Roadmap
 
-- [ ] M0 — Orientation (editor tour, VS Code hookup, first run)
+- [x] M0 — Orientation (editor tour, VS Code hookup, first run)
   - [x] M0.1 — Editor tour, placeholder `main.tscn` (Node2D + Sprite2D), first run (F5)
-  - [ ] M0.2 — VS Code external editor, verify godot-tools LSP, attach first script
+  - [x] M0.2 — VS Code external editor, verify godot-tools LSP, attach first script
 - [ ] M1 — Design one-pager
+  - [ ] M1.1 — Core loop + win/lose (DESIGN.md)
+  - [ ] M1.2 — Perspective & movement decisions (2D vs 3D, grid vs free, resolution/art)
+  - [ ] M1.3 — Setting + first pass on zombies/weapons
 - [ ] M2 — The survivor moves
 - [ ] M3 — The maze
 - [ ] M4 — Supplies (the "dots")
@@ -40,3 +43,10 @@ Things the human has learned well enough that the AI may do them directly in "dr
 - Learned: nodes vs. scenes, the four main docks, `.tscn` stores only non-default props,
   main scene is referenced by UID (why `.uid`/`.import` files get committed).
 - Open questions: none. Decided against a Godot MCP addon for now (learning goal); revisit if debugging round-trips get painful.
+
+### 2026-11-21 — M0.2 VS Code hookup
+- Godot external editor → VS Code (`D:\...\Microsoft VS Code\Code.exe`, flags `{project} --goto {file}:{line}:{col}`).
+- Attached `main.gd` to `Main`, `print()` in `_ready()` shows in Output.
+- Gotcha learned: launching Godot from VS Code's integrated terminal breaks "open in external editor"
+  silently (inherited VS Code env vars). Launch Godot via Win+R / standalone terminal.
+- Open: confirm godot-tools LSP is actually connected (status bar shows GDScript, `get_tree()` autocompletes).
