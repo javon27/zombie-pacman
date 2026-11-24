@@ -4,7 +4,7 @@
 
 ## Current step
 
-**M2 — The survivor moves**, in progress (M2.2: player scene & free movement).
+**M2 — The survivor moves**, in progress (M2.3: grid-locked movement).
 
 ## Roadmap
 
@@ -17,7 +17,7 @@
   - [x] M1.3 — Setting + first pass on zombies/weapons
 - [ ] M2 — The survivor moves
   - [x] M2.1 — Pixel-art display settings + Input Map actions
-  - [ ] M2.2 — Player scene (`CharacterBody2D`), free movement first
+  - [x] M2.2 — Player scene (`CharacterBody2D`), free movement first
   - [ ] M2.3 — Grid-locked movement (tile-to-tile)
   - [ ] M2.4 — Turn buffering (pre-turning)
   - [ ] M2.5 — Stopping (tile-center vs. anywhere playtest)
@@ -78,3 +78,10 @@ Things the human has learned well enough that the AI may do them directly in "dr
 - Set viewport to `384×216` (`1152×648` window override, `viewport` stretch, `integer` scale) and `Nearest` default texture filter.
 - Added `move_up`, `move_down`, `move_left`, `move_right` actions bound to WASD + arrow keys.
 - Next: M2.2 — create `actors/player/player.tscn` (`CharacterBody2D`) and get basic movement running.
+
+### 2026-11-24 — M2.2 Player scene & free movement
+- Built `actors/player/player.tscn` (`Player: CharacterBody2D`, Floating motion mode, `Sprite2D` at 0.125 scale, 16×16 `RectangleShape2D`); instanced in `main.tscn`.
+- `player.gd`: `@export var speed: float = 80.0`, `Input.get_vector` over the `move_*` actions, `velocity = direction * speed`, `move_and_slide()`.
+- Learned: scenes are built in the Godot editor and scripts in VS Code; Attach Script's default template is a platformer (gravity/jump), so replace it; don't multiply velocity by `delta` with `move_and_slide()`; `@export` = live tuning via the Remote tree.
+- Feel: instant start/stop, no acceleration (Pac-Man-like; needed for grid movement).
+- Next: M2.3 — grid-locked tile-to-tile movement.
