@@ -4,7 +4,7 @@
 
 ## Current step
 
-**M2 — The survivor moves**, in progress (M2.3: grid-locked movement).
+**M2 — The survivor moves**, in progress (M2.4: turn buffering).
 
 ## Roadmap
 
@@ -18,7 +18,7 @@
 - [ ] M2 — The survivor moves
   - [x] M2.1 — Pixel-art display settings + Input Map actions
   - [x] M2.2 — Player scene (`CharacterBody2D`), free movement first
-  - [ ] M2.3 — Grid-locked movement (tile-to-tile)
+  - [x] M2.3 — Grid-locked movement (tile-to-tile)
   - [ ] M2.4 — Turn buffering (pre-turning)
   - [ ] M2.5 — Stopping (tile-center vs. anywhere playtest)
 - [ ] M3 — The maze
@@ -85,3 +85,10 @@ Things the human has learned well enough that the AI may do them directly in "dr
 - Learned: scenes are built in the Godot editor and scripts in VS Code; Attach Script's default template is a platformer (gravity/jump), so replace it; don't multiply velocity by `delta` with `move_and_slide()`; `@export` = live tuning via the Remote tree.
 - Feel: instant start/stop, no acceleration (Pac-Man-like; needed for grid movement).
 - Next: M2.3 — grid-locked tile-to-tile movement.
+
+### 2026-11-24 — M2.3 Grid-locked movement
+- `player.gd` moves tile-to-tile: `_target` tile center, input read only at the target, `position.move_toward(_target, speed * delta)`; dropped `velocity`/`move_and_slide()` (overshoots tile centers; walls will be tile checks).
+- 4-way input from `get_vector` via `signf` per axis (fixed a 0.707 off-grid drift). Own idea: holding two directions prefers the axis you're *not* on → zig-zag; with walls this becomes "turn at the next opening" (seed of M2.4).
+- Added a runtime `DebugGrid` (`_draw()` + `draw_line`) to `main.tscn`. Player starts on tile center (184, 104); screen is 13.5 tiles tall, so no tile center is at screen center.
+- Design: **hold to move**, release stops at next tile center (DESIGN.md).
+- Learned: type inference (`:=`), `absf`/`signf` vs untyped `abs`/`sign`, GDScript member order + 2 blank lines between functions.

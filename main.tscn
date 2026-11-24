@@ -2,9 +2,13 @@
 
 [ext_resource type="Script" uid="uid://h3rdcr748srg" path="res://main.gd" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://0v5f4ewm26ea" path="res://actors/player/player.tscn" id="2_0xm2m"]
+[ext_resource type="Script" uid="uid://dlmebjlepvjv3" path="res://debug_grid.gd" id="3_h2yge"]
 
 [node name="Main" type="Node2D" unique_id=1188154376]
 script = ExtResource("1_0xm2m")
 
 [node name="Player" parent="." unique_id=1892352108 instance=ExtResource("2_0xm2m")]
-position = Vector2(178, 112)
+position = Vector2(184, 104)
+
+[node name="DebugGrid" type="Node2D" parent="." unique_id=1870990675]
+script = ExtResource("3_h2yge")
