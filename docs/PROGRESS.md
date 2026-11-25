@@ -4,7 +4,7 @@
 
 ## Current step
 
-**M2 — The survivor moves**, in progress (M2.4: turn buffering).
+**M3 — The maze**, next up.
 
 ## Roadmap
 
@@ -15,13 +15,14 @@
   - [x] M1.1 — Core loop + win/lose (DESIGN.md)
   - [x] M1.2 — Perspective & movement decisions (2D vs 3D, grid vs free, resolution/art)
   - [x] M1.3 — Setting + first pass on zombies/weapons
-- [ ] M2 — The survivor moves
+- [x] M2 — The survivor moves
   - [x] M2.1 — Pixel-art display settings + Input Map actions
   - [x] M2.2 — Player scene (`CharacterBody2D`), free movement first
   - [x] M2.3 — Grid-locked movement (tile-to-tile)
-  - [ ] M2.4 — Turn buffering (pre-turning)
-  - [ ] M2.5 — Stopping (tile-center vs. anywhere playtest)
+  - [~] M2.4 — Turn buffering → moved to M3 (hold-to-move makes holding the buffer; blocked-turn rule needs walls)
+  - [x] M2.5 — Stopping (tile-center vs. anywhere playtest)
 - [ ] M3 — The maze
+  - [ ] Turning into walls (from M2.4): hold-both + fallback vs. Pac-Man "keep going until the turn opens"
 - [ ] M4 — Supplies (the "dots")
 - [ ] M5 — Zombies
 - [ ] M6 — Weapons (the power pellets)
@@ -92,3 +93,10 @@ Things the human has learned well enough that the AI may do them directly in "dr
 - Added a runtime `DebugGrid` (`_draw()` + `draw_line`) to `main.tscn`. Player starts on tile center (184, 104); screen is 13.5 tiles tall, so no tile center is at screen center.
 - Design: **hold to move**, release stops at next tile center (DESIGN.md).
 - Learned: type inference (`:=`), `absf`/`signf` vs untyped `abs`/`sign`, GDScript member order + 2 blank lines between functions.
+
+### 2026-11-24 — M2.5 Stopping playtest (M2 complete)
+- Added instant mid-tile reverse (`_target += direction * TILE_SIZE`, update heading) and an `@export var stop_anywhere` A/B toggle.
+- Playtested: **stop only at tile centers** (stop-anywhere rejected). Recorded in DESIGN.md.
+- Learned: the grid invariant (`_target` is always a tile center; never set it to `position` mid-tile); `Vector2(x, y)` argument order bug; Local vs. Remote scene tree (Local edits save overrides into the scene, shown with a ↺ revert icon).
+- M2.4 (turn buffering) moved into M3: with hold-to-move, holding *is* the buffer; the blocked-turn rule needs walls.
+- Next: M3 — the maze (`TileMapLayer`, TileSet, wall checks).

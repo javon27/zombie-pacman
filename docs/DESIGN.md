@@ -64,7 +64,8 @@ Zombie AI is grid-based too (tile-to-tile pathing).
 - **How to hide:** break line of sight with a chasing zombie, then make **2+ turns**. The
   zombie loses track (goes to your last known position and sniffs around).
 - Unlike Pac-Man, the survivor can **stop** moving (still grid-locked).
-- **Hold to move:** the survivor moves only while a direction is held; release = stop at the next tile center. No auto-run.
+- **Hold to move:** the survivor moves only while a direction is held; release = stop at the next tile center (stop-anywhere was playtested in M2.5 and rejected).
+  No auto-run. **Instant reverse** mid-tile is allowed.
 
 ## Supplies (the "dots")
 
@@ -108,8 +109,6 @@ _Timed durability is the starting idea. Alternatives to playtest: hit-count, amm
 
 - **Special item: what does it do?** Pac-Man's fruit is just bonus points, appearing briefly
   at a fixed spot. A fuel container hints at a mechanic (fire? a generator?); cake is pure reward.
-- **Stopping: anywhere, or only at tile centers?** Tile-center stops keep the grid clean;
-  mid-tile stops feel more responsive. Playtest in M2.
 - **How long does a zombie stay lost?** Does it sniff for a few seconds, then resume
   chasing from anywhere, or wander until it sees you again?
 - **How long is the overrun timer, and does it reset on death?** Also: does the horde size
@@ -142,4 +141,5 @@ _Timed durability is the starting idea. Alternatives to playtest: hit-count, amm
 | 2026-11-21 | Level 1 is a grocery store | Aisles map to Pac-Man corridors; sets the tone |
 | 2026-11-21 | First weapon: melee (bat/crowbar) | Simple to prototype; closest to a power pellet |
 | 2026-11-21 | Supplies mostly equivalent + one special item | Pac-Man dots + fruit model |
+| 2026-11-24 | Stop only at tile centers; instant reverse mid-tile | Playtested stop-anywhere in M2.5 and didn't like it; reverse keeps Pac-Man's dodge |
 | 2026-11-24 | Hold a direction to move; releasing stops at the next tile center (no Pac-Man auto-run) | Stopping (for hiding) comes for free; deliberate, direct control |
